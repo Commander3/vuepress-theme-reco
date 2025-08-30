@@ -5,15 +5,15 @@ import SafeRouterLink from '@components/SafeRouterLink.vue'
 const props = defineProps({
   icon: {
     type: String,
-    default: ''
+    default: '',
   },
   link: {
     type: String,
-    default: ''
+    default: '',
   },
   title: {
     type: String,
-    default: ''
+    default: '',
   },
 })
 
@@ -22,12 +22,7 @@ const { title, icon, link } = toRefs(props)
 
 <template>
   <div class="site-brand">
-    <img
-      v-if="icon"
-      class="logo"
-      :src="icon"
-      :alt="title"
-    />
+    <img v-if="icon" class="logo" :src="icon" :alt="title" />
 
     <SafeRouterLink
       v-if="title"
@@ -44,7 +39,7 @@ const { title, icon, link } = toRefs(props)
 .site-brand {
   @apply flex text-xl font-semibold;
   .logo {
-    @apply mr-4 inline-block w-8 h-8 rounded-lg;
+    @apply mr-4 inline-block w-8 h-8;
   }
 }
 </style>
