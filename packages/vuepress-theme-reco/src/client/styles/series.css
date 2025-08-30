@@ -1,5 +1,5 @@
 .series-container {
-  @apply transition-all duration-500 p-6 pt-7 w-64 fixed bottom-0 left-0 z-50 top-0 overflow-y-auto h-full;
+  @apply transition-all duration-500 p-6 pt-2 w-64 fixed bottom-0 left-0 z-50 top-0 overflow-y-auto h-full;
   @apply -translate-x-full;
   @apply md:translate-x-0 md:sticky md:top-16 md:z-40 !important;
   .series-group {
@@ -22,7 +22,6 @@
     }
     h5.series-heading {
       /* @apply mb-0; */
-      @apply pl-2;
 
       & + ul {
         @apply pl-0 m-0 list-none;
@@ -30,8 +29,7 @@
     }
 
     h6.series-heading {
-      @apply mt-0 mb-0 py-1 pl-3;
-      @apply border-l-2 border-solid border-transparent;
+      @apply mt-0 mb-0 py-1;
     }
     /* h5.series-heading {
       @apply flex justify-between items-center cursor-pointer pt-0 my-0 text-basic;
@@ -61,8 +59,8 @@
     }
   }
   a.series-item {
-    @apply pl-3 relative block transition-all duration-500 leading-7 text-sm;
-    @apply mb-1 border-l-2 border-solid border-transparent;
+    @apply relative block transition-all duration-500 leading-7 text-sm;
+    @apply mb-1;
     &::before {
       @apply absolute inset-y-0 left-0 m-auto block w-0 h-0 rounded-1/2 transition-all duration-500;
       @apply bg-reco-primary;
@@ -72,7 +70,10 @@
       @apply text-reco-primary;
     }
     &.router-link-active {
-      @apply border-l-2 border-solid border-reco-primary;
+      @apply pl-4;
+      &::before {
+        @apply w-1.5 h-1.5;
+      }
       span {
         @apply text-reco-primary;
       }
