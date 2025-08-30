@@ -3,14 +3,14 @@
   @apply -translate-x-full;
   @apply md:translate-x-0 md:sticky md:top-16 md:z-40 !important;
   .series-group {
-    @apply pb-6;
+    @apply pb-4;
     .series-heading {
-      @apply mb-4 font-extrabold;
+      @apply mb-2 font-normal text-basic flex justify-between items-center cursor-pointer;
       span {
         @apply text-ellipsis overflow-hidden text-nowrap;
       }
       & + ul {
-        @apply pl-0 m-0 list-none;
+        @apply pl-4 m-0 list-none;
         li:is(:last-of-type) .series-group {
           @apply pb-0;
         }
@@ -20,6 +20,17 @@
       }
     }
     h5.series-heading {
+      @apply mb-2;
+
+      & + ul {
+        @apply pl-0 m-0 list-none;
+      }
+    }
+
+    h6.series-heading {
+      @apply mt-0 mb-0 py-1;
+    }
+    /* h5.series-heading {
       @apply flex justify-between items-center cursor-pointer pt-0 my-0 text-basic;
       & + ul {
         @apply pt-4;
@@ -38,22 +49,16 @@
     }
     h6.series-heading {
       @apply mt-0 pt-3 text-basic;
-    }
-    &:not(:first-of-type){
-      @apply border-basic-top border-dashed;
-      h5.series-heading {
-        @apply mt-6;
-      }
+    } */
+    &:not(:first-of-type) {
+      @apply border-basic-top border-solid;
     }
     .series-item {
       @apply text-lighter;
     }
-    ul {
-      @apply pl-4 list-none;
-    }
   }
   a.series-item {
-    @apply relative block py-1 transition-all duration-500 leading-7 text-sm;
+    @appl py-1 relative block transition-all duration-500 leading-7 text-sm;
     &::before {
       @apply absolute inset-y-0 left-0 m-auto block w-0 h-0 rounded-1/2 transition-all duration-500;
       @apply bg-reco-primary;
@@ -63,10 +68,6 @@
       @apply text-reco-primary;
     }
     &.router-link-active {
-      @apply pl-4;
-      &::before {
-        @apply w-1.5 h-1.5;
-      }
       span {
         @apply text-reco-primary;
       }
@@ -76,7 +77,7 @@
 
 @media (min-width: 768px) {
   .series-container {
-    max-height: calc(100vh - 4rem)
+    max-height: calc(100vh - 4rem);
   }
 }
 

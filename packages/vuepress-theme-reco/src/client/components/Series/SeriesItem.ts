@@ -40,7 +40,6 @@ const isActiveItem = (
     return item.children.some((child) => isActiveItem(route, child))
   }
 
-
   if (isActiveLink(route, item.link)) {
     return true
   }
@@ -49,7 +48,7 @@ const isActiveItem = (
 }
 
 const togglecollapsible = (e, item, level) => {
-  if (level !== 1) return
+  if (!item.children) return
 
   item.collapsible = !!!item.collapsible
 
@@ -68,7 +67,11 @@ const togglecollapsible = (e, item, level) => {
   }
 }
 
-const renderItem = (item: ResolvedSeriesItem, level: number, props: VNode['props']): VNode => {
+const renderItem = (
+  item: ResolvedSeriesItem,
+  level: number,
+  props: VNode['props']
+): VNode => {
   if (item.link) {
     return h(Link, {
       ...props,
@@ -79,19 +82,28 @@ const renderItem = (item: ResolvedSeriesItem, level: number, props: VNode['props
   const titleTag = level === 1 ? 'h5' : 'h6'
 
   // if the item only has text, render it as `<p>`
-  return h(titleTag, { ...props, onClick: (e) => togglecollapsible(e, item, level) }, [
-    h(Xicons, {
-      icon: level === 1 ? IconFolder : '',
-      text: item.text,
-      textSize: level === 1 ? 16 : 14
-    }),
-    level !== 1 ? null : h('span', {
-      class: !!item.collapsible ? 'arrow right' : 'arrow down',
-    }),
-  ])
+  return h(
+    titleTag,
+    { ...props, onClick: (e) => togglecollapsible(e, item, level) },
+    [
+      h(Xicons, {
+        icon: '',
+        text: item.text,
+        textSize: 14,
+      }),
+      !item.children
+        ? null
+        : h('span', {
+            class: !!item.collapsible ? 'arrow right' : 'arrow down',
+          }),
+    ]
+  )
 }
 
-const renderChildren = (item: ResolvedSeriesItem, level: number): VNode | null => {
+const renderChildren = (
+  item: ResolvedSeriesItem,
+  level: number
+): VNode | null => {
   if (!item.children?.length) {
     return null
   }
@@ -108,7 +120,7 @@ const renderChildren = (item: ResolvedSeriesItem, level: number): VNode | null =
         'li',
         h(SeriesItem, {
           item: child,
-          level
+          level,
         })
       )
     )
