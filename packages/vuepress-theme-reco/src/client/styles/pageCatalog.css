@@ -1,9 +1,27 @@
 .page-catalog-container {
   @apply p-6 w-60 sticky z-10 top-16 hidden overflow-y-auto h-full;
   @apply lg:block;
+  @apply border-solid;
+  border-color: var(--page-catalog-container-border-color);
+  border-left-width: 1px;
 
+  /* h2::before{
+    margin-bottom: 1.5rem;
+    display: block;
+    width: 100%;
+    border-top-width: 1px;
+    border-style: solid;
+    border-color: rgba(200, 200, 200, .32);
+}
+h2:is(.dark *)::before{
+    border-color: rgba(82, 82, 89, .32);
+} */
   .tip {
-    @apply mt-0 pt-0 font-extrabold;
+    @apply mt-0 pt-0 font-semibold;
+  }
+
+  h5.tip {
+    @apply mb-0;
   }
 
   ul {
@@ -16,7 +34,7 @@
     }
 
     .page-catalog-menu-depth_2 {
-      @apply py-4 font-semibold text-sm;
+      @apply py-4 font-normal text-sm;
       @apply border-basic-top border-dashed;
       &.active,
       &:hover {

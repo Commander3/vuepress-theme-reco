@@ -1,5 +1,6 @@
 @import '@vuepress-reco/tailwindcss-config/lib/client/styles/tailwindcss-base.css';
 
+@import 'variable.css';
 @import 'algolia.css';
 @import 'arrow.css';
 @import 'backToTop.css';
