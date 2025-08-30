@@ -5,7 +5,8 @@
   .series-group {
     @apply pb-4;
     .series-heading {
-      @apply mb-2 font-normal text-basic flex justify-between items-center cursor-pointer;
+      line-height: 24px;
+      @apply mb-0 font-normal text-basic flex justify-between items-center cursor-pointer;
       span {
         @apply text-ellipsis overflow-hidden text-nowrap;
       }
@@ -16,11 +17,11 @@
         }
       }
       &.active {
-        @apply text-reco-primary;
+        @apply text-cj-primary;
       }
     }
     h5.series-heading {
-      @apply mb-2;
+      /* @apply mb-0; */
 
       & + ul {
         @apply pl-0 m-0 list-none;
@@ -28,7 +29,7 @@
     }
 
     h6.series-heading {
-      @apply mt-0 mb-0 py-1;
+      @apply mt-0 mb-0 pt-1;
     }
     /* h5.series-heading {
       @apply flex justify-between items-center cursor-pointer pt-0 my-0 text-basic;
@@ -55,21 +56,22 @@
     }
     .series-item {
       @apply text-lighter;
+      line-height: 24px;
     }
   }
   a.series-item {
-    @appl py-1 relative block transition-all duration-500 leading-7 text-sm;
+    @appl relative block transition-all duration-500 leading-7 text-sm;
     &::before {
       @apply absolute inset-y-0 left-0 m-auto block w-0 h-0 rounded-1/2 transition-all duration-500;
       @apply bg-reco-primary;
       content: '';
     }
     &:hover {
-      @apply text-reco-primary;
+      @apply text-cj-primary;
     }
     &.router-link-active {
       span {
-        @apply text-reco-primary;
+        @apply text-cj-primary;
       }
     }
   }

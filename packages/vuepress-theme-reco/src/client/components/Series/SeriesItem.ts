@@ -89,7 +89,7 @@ const renderItem = (
       h(Xicons, {
         icon: '',
         text: item.text,
-        textSize: 14,
+        textSize: level === 1 ? 14 : 14,
       }),
       !item.children
         ? null

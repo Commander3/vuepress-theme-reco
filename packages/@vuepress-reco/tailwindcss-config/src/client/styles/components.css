@@ -60,4 +60,8 @@
     @apply text-basic bg-reco-bg-lightmode-active;
     @apply dark:bg-reco-bg-darkmode-active;
   }
+
+  .text-cj-primary {
+    color: #0673fe;
+  }
 }
