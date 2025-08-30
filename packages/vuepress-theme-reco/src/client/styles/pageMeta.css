@@ -8,7 +8,7 @@
       @apply dark:text-reco-text-darkmode;
     }
   }
-  .edit-link .xicon-container{
+  .edit-link .xicon-container {
     @apply mr-4 text-reco-primary !important;
   }
 }

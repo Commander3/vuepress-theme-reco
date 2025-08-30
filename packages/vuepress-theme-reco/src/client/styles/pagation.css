@@ -1,6 +1,7 @@
 .pagation-container {
   @apply flex justify-center flex-wrap;
-  .jump, .jumpinput {
+  .jump,
+  .jumpinput {
     @apply inline-flex mr-2 mb-2 w-6 h-6 items-center justify-center rounded-lg cursor-pointer border-reco-primary border border-solid max-w-xs text-reco-text-lightmode;
   }
   .jump {
@@ -21,7 +22,8 @@
 }
 
 /* 兼容 */
-.pagation-container .jump, .pagation-container .jumpinput {
+.pagation-container .jump,
+.pagation-container .jumpinput {
   @apply dark:text-reco-text-darkmode;
 }
 .pagation-container .jumpinput input {

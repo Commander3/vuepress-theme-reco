@@ -44,7 +44,7 @@
 
     /* 选中高亮，不可以移动 */
     .router-link-active {
-      @apply text-cj-primary !important;
+      @apply text-reco-primary !important;
     }
   }
 

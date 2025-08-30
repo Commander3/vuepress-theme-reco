@@ -12,7 +12,8 @@
       }
       &.item {
         @apply relative transition-all duration-500 leading-10 text-lighter;
-        span, a {
+        span,
+        a {
           @apply text-lighter;
         }
         &::before {
@@ -25,7 +26,8 @@
           &::before {
             @apply w-1.5 h-1.5;
           }
-          span, a {
+          span,
+          a {
             @apply text-reco-primary;
           }
         }

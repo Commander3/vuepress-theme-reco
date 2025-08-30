@@ -16,7 +16,7 @@
         }
       }
       &.active {
-        @apply text-cj-primary;
+        @apply text-reco-primary;
       }
     }
     h5.series-heading {
@@ -65,11 +65,11 @@
       content: '';
     }
     &:hover {
-      @apply text-cj-primary;
+      @apply text-reco-primary;
     }
     &.router-link-active {
       span {
-        @apply text-cj-primary;
+        @apply text-reco-primary;
       }
     }
   }

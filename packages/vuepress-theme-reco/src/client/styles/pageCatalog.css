@@ -18,7 +18,8 @@
     .page-catalog-menu-depth_2 {
       @apply py-4 font-semibold text-sm;
       @apply border-basic-top border-dashed;
-      &.active, &:hover {
+      &.active,
+      &:hover {
         .page-catalog-item {
           @apply text-reco-primary;
         }
@@ -53,10 +54,8 @@
   }
 }
 
-
-
 @media (min-width: 768px) {
   .page-catalog-container {
-    max-height: calc(100vh - 4rem)
+    max-height: calc(100vh - 4rem);
   }
 }

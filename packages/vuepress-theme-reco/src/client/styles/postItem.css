@@ -6,7 +6,7 @@
 
     &:after {
       @apply absolute left-0 -bottom-2 w-full;
-      content: "";
+      content: '';
       height: 2px;
       visibility: hidden;
       -webkit-transform: scaleX(0);

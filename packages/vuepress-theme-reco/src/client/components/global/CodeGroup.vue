@@ -123,13 +123,10 @@ export default defineComponent({
                     onClick: () => (activeIndex.value = i),
                     onKeydown: (e) => keyboardHandler(e, i),
                   },
-                  h(
-                    Xicons,
-                    {
-                      icon: IconCode,
-                      text: vnode.props.title,
-                    }
-                  )
+                  h(Xicons, {
+                    icon: IconCode,
+                    text: vnode.props.title,
+                  })
                 )
               )
             })
@@ -161,7 +158,7 @@ export default defineComponent({
           &.code-group__nav-tab-active {
             @apply border-reco-primary !important;
             .xicon-container {
-            @apply text-reco-primary;
+              @apply text-reco-primary;
             }
           }
         }
