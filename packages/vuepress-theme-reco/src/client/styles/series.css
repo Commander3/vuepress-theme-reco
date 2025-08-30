@@ -5,7 +5,8 @@
   .series-group {
     @apply pb-4;
     .series-heading {
-      @apply mb-0 font-normal text-basic flex justify-between items-center cursor-pointer;
+      @apply pl-2 mb-0 font-normal text-basic flex justify-between items-center cursor-pointer;
+      @apply ml-0;
       span {
         @apply text-ellipsis overflow-hidden text-nowrap;
       }
@@ -58,7 +59,8 @@
     }
   }
   a.series-item {
-    @apply relative block transition-all duration-500 leading-7 text-sm;
+    @apply pl-3 relative block transition-all duration-500 leading-7 text-sm;
+    @apply mb-1 border-l-2 border-solid border-transparent;
     &::before {
       @apply absolute inset-y-0 left-0 m-auto block w-0 h-0 rounded-1/2 transition-all duration-500;
       @apply bg-reco-primary;
@@ -68,6 +70,7 @@
       @apply text-reco-primary;
     }
     &.router-link-active {
+      @apply border-l-2 border-solid border-reco-primary;
       span {
         @apply text-reco-primary;
       }
