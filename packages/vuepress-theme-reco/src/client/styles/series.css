@@ -5,7 +5,7 @@
   .series-group {
     @apply pb-4;
     .series-heading {
-      @apply pl-2 mb-0 font-normal text-basic flex justify-between items-center cursor-pointer;
+      @apply mb-0 font-normal text-basic flex justify-between items-center cursor-pointer mt-0 pt-4;
       @apply ml-0;
       span {
         @apply text-ellipsis overflow-hidden text-nowrap;
@@ -22,6 +22,7 @@
     }
     h5.series-heading {
       /* @apply mb-0; */
+      @apply pl-2;
 
       & + ul {
         @apply pl-0 m-0 list-none;
@@ -29,7 +30,8 @@
     }
 
     h6.series-heading {
-      @apply mt-0 mb-0 py-1;
+      @apply mt-0 mb-0 py-1 pl-3;
+      @apply border-l-2 border-solid border-transparent;
     }
     /* h5.series-heading {
       @apply flex justify-between items-center cursor-pointer pt-0 my-0 text-basic;

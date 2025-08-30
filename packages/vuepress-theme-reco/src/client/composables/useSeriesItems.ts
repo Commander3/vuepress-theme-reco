@@ -3,7 +3,6 @@ import { useRoute, usePageFrontmatter } from 'vuepress/client'
 import { isPlainObject, isString, resolveLocalePath } from 'vuepress/shared'
 import { useExtendPageData } from '@vuepress-reco/vuepress-plugin-page/composables'
 
-
 import { useSortSeries, useThemeLocaleData } from '@composables/index.js'
 
 import type { ComputedRef } from 'vue'
@@ -47,7 +46,7 @@ const resolveSeriesItems = (
   // get series config from frontmatter > themeConfig
   let seriesConfig = themeLocal.series ?? {}
 
-  Object.keys(autoSeries).forEach(key => {
+  Object.keys(autoSeries).forEach((key) => {
     autoSeries[key] = sortSeries(autoSeries[key])
   })
 
@@ -73,23 +72,32 @@ const resolveSeriesItems = (
 /**
  * Resolve series items if the config is an array
  */
-const resolveArraySeriesItems = (seriesPath: string, seriesConfig: SeriesConfigArray): ResolvedSeriesItem[] => {
-  return seriesConfig.map((item): ResolvedSeriesItem => {
-    if (isString(item)) {
-      const link = item.includes(seriesPath) ? item : `${seriesPath}${item}`
-      return getNavLink(link)
-    }
+const resolveArraySeriesItems = (
+  seriesPath: string,
+  seriesConfig: SeriesConfigArray
+): ResolvedSeriesItem[] => {
+  return seriesConfig.map(
+    (item): ResolvedSeriesItem => {
+      if (isString(item)) {
+        const link = item.includes(seriesPath) ? item : `${seriesPath}${item}`
+        return getNavLink(link)
+      }
 
-    const resolvedItem = { ...item }
-    // @ts-ignore
-    if (item.children) {
+      const resolvedItem = { ...item }
       // @ts-ignore
-      resolvedItem.children = resolveArraySeriesItems(seriesPath, item.children)
-    }
+      if (item.children) {
+        // @ts-ignore
+        resolvedItem.children = resolveArraySeriesItems(
+          seriesPath,
+          // @ts-ignore
+          item.children
+        )
+      }
 
-    // @ts-ignore
-    return resolvedItem
-  })
+      // @ts-ignore
+      return resolvedItem
+    }
+  )
 }
 
 /**
@@ -103,7 +111,7 @@ const resolveMultiSeriesItems = (
   if (!route || typeof route.path === 'undefined') {
     return []
   }
-  
+
   const seriesPath = resolveLocalePath(
     seriesConfig,
     decodeURIComponent(route.path)
