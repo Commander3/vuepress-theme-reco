@@ -5,7 +5,7 @@
   .series-group {
     @apply pb-4;
     .series-heading {
-      @apply mb-0 font-normal text-basic flex justify-between items-center cursor-pointer mt-0 pt-4;
+      @apply mb-0 font-medium text-basic flex justify-between items-center cursor-pointer mt-0 pt-4;
       @apply ml-0;
       span {
         @apply text-ellipsis overflow-hidden text-nowrap;

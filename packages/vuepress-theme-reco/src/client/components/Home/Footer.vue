@@ -4,7 +4,7 @@
       <Xicons
         target="_blank"
         :icon="IconColorPalette"
-        :text="`vuepress-theme-reco@${version}`"
+        :text="`本文档基于vuepress-theme-reco框架`"
         link="https://vuepress-theme-reco.recoluan.com"
       />
     </span>
@@ -21,21 +21,47 @@
     <span>
       <Xicons :text="copyRight" :icon="IconCopyRight">
         <template #icon>
-          <svg class="xicon-icon" style="width: 18px; height: 18px; font-size: 18px; color: inherit;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M14 9.75a3.016 3.016 0 0 0-4.163.173a2.993 2.993 0 0 0 0 4.154A3.016 3.016 0 0 0 14 14.25"></path></g></svg>
+          <svg
+            class="xicon-icon"
+            style="width: 18px; height: 18px; font-size: 18px; color: inherit"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 24 24"
+          >
+            <g
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="9"></circle>
+              <path
+                d="M14 9.75a3.016 3.016 0 0 0-4.163.173a2.993 2.993 0 0 0 0 4.154A3.016 3.016 0 0 0 14 14.25"
+              ></path>
+            </g>
+          </svg>
         </template>
       </Xicons>
     </span>
 
     <span v-if="showAccessNumber">
       <Xicons :icon="IconEye">
-        <ValineViews v-if="solution==='valine'" :idVal="homeLink" />
-        <WalineViews v-if="solution==='waline'" :path="homeLink" />
+        <ValineViews v-if="solution === 'valine'" :idVal="homeLink" />
+        <WalineViews v-if="solution === 'waline'" :path="homeLink" />
       </Xicons>
     </span>
 
-    <span class="cyber-security" v-if="frontmatter?.footer?.cyberSecurityRecord">
-      <img src="../../assets/cyberSecurityRecord.png" alt="">
-      <a :href="frontmatter?.footer?.cyberSecurityLink || '#'" target="_blank">{{ frontmatter?.footer?.cyberSecurityRecord }}</a>
+    <span
+      class="cyber-security"
+      v-if="frontmatter?.footer?.cyberSecurityRecord"
+    >
+      <img src="../../assets/cyberSecurityRecord.png" alt="" />
+      <a
+        :href="frontmatter?.footer?.cyberSecurityLink || '#'"
+        target="_blank"
+        >{{ frontmatter?.footer?.cyberSecurityRecord }}</a
+      >
     </span>
 
     <Comments v-if="!isShowCommentAtHomePage" :hide-comments="true" />
@@ -47,7 +73,12 @@ import { computed } from 'vue'
 import { useRouteLocale } from 'vuepress/client'
 import packageInfo from 'vuepress-theme-reco/package.json'
 import { useComment } from '@vuepress-reco/vuepress-plugin-comments/composables'
-import { IconColorPalette, IconSecurity, IconEye, IconCopyRight } from '@components/icons/index.js'
+import {
+  IconColorPalette,
+  IconSecurity,
+  IconEye,
+  IconCopyRight,
+} from '@components/icons/index.js'
 
 import { useThemeLocaleData, usePageFrontmatter } from '@composables/index.js'
 
