@@ -1,10 +1,6 @@
 <template>
   <!-- 添加preventDefault防止a标签默认行为，避免页面闪白 -->
-  <component
-    :is="linkComponent"
-    v-bind="componentProps"
-    @click="handleClick"
-  >
+  <component :is="linkComponent" v-bind="componentProps" @click="handleClick">
     <slot></slot>
   </component>
 </template>
@@ -39,28 +35,29 @@ const linkComponent = shallowRef('a')
 const props = defineProps({
   to: {
     type: [String, Object],
-    required: true
+    required: true,
   },
   custom: {
     type: Boolean,
-    default: false
+    default: false,
   },
   replace: {
     type: Boolean,
-    default: false
+    default: false,
   },
   ariaCurrent: {
     type: String,
-    default: 'page'
-  }
+    default: 'page',
+  },
 })
 
 // 计算出给组件的属性
 const componentProps = computed(() => {
   // 处理对象形式的 to 属性，确保在使用 a 标签时有正确的 href
-  const toPath = typeof props.to === 'string'
-    ? props.to
-    : (props.to && typeof props.to === 'object' && props.to.path)
+  const toPath =
+    typeof props.to === 'string'
+      ? props.to
+      : props.to && typeof props.to === 'object' && props.to.path
       ? props.to.path
       : '/'
 
@@ -69,16 +66,16 @@ const componentProps = computed(() => {
     return {
       class: 'router-link-fallback',
       href: toPath,
-      ...props.$attrs
+      ...props.$attrs,
     }
   } else {
     // 在客户端且RouterLink已加载，使用RouterLink的属性
     return {
-      to: props.to,
-      custom: props.custom,
-      replace: props.replace,
+      'to': props.to,
+      'custom': props.custom,
+      'replace': props.replace,
       'aria-current': props.ariaCurrent,
-      ...props.$attrs
+      ...props.$attrs,
     }
   }
 })
@@ -88,9 +85,10 @@ const handleClick = (e) => {
   // 如果还在使用a标签时，防止默认行为并用编程式跳转
   if (linkComponent.value === 'a' && router) {
     e.preventDefault()
-    const toPath = typeof props.to === 'string'
-      ? props.to
-      : (props.to && typeof props.to === 'object' && props.to.path)
+    const toPath =
+      typeof props.to === 'string'
+        ? props.to
+        : props.to && typeof props.to === 'object' && props.to.path
         ? props.to.path
         : '/'
 
@@ -120,17 +118,22 @@ const loadRouterLink = () => {
   }
 
   try {
-    import('vuepress/client').then(vuepress => {
-      if (vuepress.RouterLink) {
-        // 缓存RouterLink组件引用
-        window.__ROUTER_LINK_COMPONENT__ = vuepress.RouterLink
-        window.__ROUTER_LINK_LOADED__ = true
-        linkComponent.value = vuepress.RouterLink
-        routerLinkLoaded.value = true
-      }
-    }).catch(e => {
-      console.warn('SafeRouterLink: Failed to load RouterLink, using fallback link', e)
-    })
+    import('vuepress/client')
+      .then((vuepress) => {
+        if (vuepress.RouterLink) {
+          // 缓存RouterLink组件引用
+          window.__ROUTER_LINK_COMPONENT__ = vuepress.RouterLink
+          window.__ROUTER_LINK_LOADED__ = true
+          linkComponent.value = vuepress.RouterLink
+          routerLinkLoaded.value = true
+        }
+      })
+      .catch((e) => {
+        console.warn(
+          'SafeRouterLink: Failed to load RouterLink, using fallback link',
+          e
+        )
+      })
   } catch (e) {
     console.warn('SafeRouterLink: Error importing RouterLink', e)
   }

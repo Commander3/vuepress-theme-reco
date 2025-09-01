@@ -1,7 +1,7 @@
 .search-box {
   input {
     background: url('../assets/search.svg') 0.4rem 0.3rem no-repeat;
-    background-position-x: right 3px;
+    background-position-x: right;
     background-position-y: center;
     background-size: 1.2rem 1.2rem;
     min-width: 10rem;
