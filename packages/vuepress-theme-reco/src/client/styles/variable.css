@@ -1,8 +1,10 @@
 :root {
   --cj-primary: #0673fe;
   --page-catalog-container-border-color: rgba(200, 200, 200, 0.32);
+  scrollbar-width: thin;
 }
 
 :root.dark {
   --page-catalog-container-border-color: rgba(82, 82, 89, 0.32);
+  scrollbar-color:#dee4eb #161617;
 }
