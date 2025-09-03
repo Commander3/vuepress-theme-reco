@@ -84,7 +84,10 @@ const iconStyle = computed(() => {
 })
 
 const textStyle = computed(() => {
-  return { color: color.value, fontSize: `${textSize.value}px` }
+  if (color.value.length > 0) {
+    return { color: color.value, fontSize: `${textSize.value}px` }
+  }
+  return { fontSize: `${textSize.value}px` }
 })
 
 const handleClick = () => {
