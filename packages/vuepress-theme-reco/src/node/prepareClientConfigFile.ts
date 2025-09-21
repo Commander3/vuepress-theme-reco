@@ -43,6 +43,7 @@ import { defineClientConfig } from 'vuepress/client'
 
 import { applyClientSetup } from '${CLIENT_FOLDER}clientSetup.js'
 import { applyClientEnhance } from '${CLIENT_FOLDER}clientEnhance.js'
+import { customizeLayout } from '${CLIENT_FOLDER}clientLayout.js'
 
 import * as layouts from '${CLIENT_FOLDER}layouts/index.js'
 `
@@ -58,7 +59,7 @@ import * as layouts from '${CLIENT_FOLDER}layouts/index.js'
     applyClientSetup()
   },
   // @ts-ignore
-  layouts: { ...layouts, ...layoutsFromDir },
+  layouts: { ...layouts, ...layoutsFromDir, ...customizeLayout },
 })
 `
 

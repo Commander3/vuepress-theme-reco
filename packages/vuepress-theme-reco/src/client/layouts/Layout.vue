@@ -47,4 +47,11 @@ const route = useRoute()
 watch(route, () => {
   initMagicCard()
 })
+/***
+ *     "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.5"
+ */
 </script>
+
+

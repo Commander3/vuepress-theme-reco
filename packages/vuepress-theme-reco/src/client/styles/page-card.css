@@ -1,0 +1,6 @@
+.page-content {
+    .page-card {
+        @apply mb-4 p-2 mr-2 border border-solid border-reco-primary rounded-lg inline-block;
+        @apply dark:text-reco-text-darkmode;
+    }
+}

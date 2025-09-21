@@ -1,10 +1,25 @@
 :root {
   --cj-primary: #0673fe;
   --page-catalog-container-border-color: rgba(200, 200, 200, 0.32);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
   scrollbar-width: thin;
 }
 
 :root.dark {
   --page-catalog-container-border-color: rgba(82, 82, 89, 0.32);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
   scrollbar-color:#dee4eb #161617;
+}
+
+@theme inline {
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
 }

@@ -214,6 +214,7 @@ export interface RecoThemeLocaleData extends LocaleData {
   primaryColor?: string
 
   socialLinks?: Array<SocialLink>
+  stdInformation?: {title: string, deprecated: boolean, url: string}[]
 }
 
 export type AutoAddCategoryToNavbarOptions = {
