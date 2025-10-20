@@ -1113,15 +1113,6 @@ onMounted(() => {
   background-color: #f1f1f1;
 }
 
-/* 聊天输入框 */
-.ai-chat-inner .chat-input {
-  @apply bg-block;
-  display: flex;
-  align-items: center;
-  border-radius: 20px;
-  padding: 6px 12px;
-}
-
 .ai-chat-inner .chat-input input {
   flex: 1;
   border: none;
@@ -1131,16 +1122,6 @@ onMounted(() => {
   font-size: 14px;
 }
 
-.ai-chat-inner .chat-input button {
-  @apply flex items-center justify-center;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  padding: 6px 6px;
-  cursor: pointer;
-  font-size: 14px;
-  margin-left: 8px;
-}
 
 .ai-chat-inner .chat-input button:disabled {
   background-color: #ccc;
@@ -1160,6 +1141,26 @@ onMounted(() => {
 
 <style scoped>
 @import '@vuepress-reco/tailwindcss-config/lib/client/styles/tailwindcss-base.css';
+
+/* 聊天输入框 */
+.ai-chat-inner :deep(.chat-input) {
+  @apply bg-block;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 6px 12px;
+}
+
+.ai-chat-inner :deep(.chat-input button) {
+  @apply flex items-center justify-center;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 6px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 8px;
+}
 
 .ai-chat {
   @apply max-w-screen-xl mx-auto my-16 px-6;
