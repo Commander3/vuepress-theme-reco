@@ -1,10 +1,10 @@
 import { path } from 'vuepress/utils'
 
 // The official plugins for vuepress
-import {
-  docsearchPlugin,
-  DocSearchPluginOptions,
-} from '@vuepress/plugin-docsearch'
+// import {
+//   docsearchPlugin,
+//   DocSearchPluginOptions,
+// } from '@vuepress/plugin-docsearch'
 import { gitPlugin } from '@vuepress/plugin-git'
 import { searchPlugin } from '@vuepress/plugin-search'
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
@@ -17,6 +17,7 @@ import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 import { externalLinkIconPlugin } from '@vuepress/plugin-external-link-icon'
 import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
+import { minisearchPlugin } from '@vuepress-reco/vuepress-plugin-minisearch'
 
 // The official plugins for vuepress-reco
 import { pagePlugin } from '@vuepress-reco/vuepress-plugin-page'
@@ -58,7 +59,7 @@ export const resolveBuildInPlugins = (themeConfig): Array<Plugin> => {
     }),
     themeDataPlugin({ themeData: themeConfig }),
     pagePlugin([...pages, ...(themeConfig.pages || [])], themeConfig),
-    searchPlugin({ hotKeys: [{ key: 's', ctrl: true }] }),
+    // searchPlugin({ hotKeys: [{ key: 's', ctrl: true }] }),
     mediumZoomPlugin({ zoomOptions: { background: 'inherit' } }),
     activeHeaderLinksPlugin({ headerLinkSelector: 'a.page-catalog-item' }),
     containerPlugin(resolveContainerOptions('tip', themeConfig)),
@@ -68,15 +69,18 @@ export const resolveBuildInPlugins = (themeConfig): Array<Plugin> => {
     containerPlugin(resolveContainerOptions('details', themeConfig)),
     containerPlugin(resolveContainerOptions('code-group', themeConfig)),
     containerPlugin(resolveContainerOptions('code-group-item', themeConfig)),
+    minisearchPlugin(themeConfig),
   ]
 
-  if (themeConfig?.algolia) {
-    plugins.push(
-      docsearchPlugin(
-        (themeConfig.algolia as unknown) as DocSearchPluginOptions
-      )
-    )
-  }
+  // ! nxx: I don't need to use the docsearch plugin, so I comment it out
+  //
+  // if (themeConfig?.algolia) {
+  //   plugins.push(
+  //     docsearchPlugin(
+  //       (themeConfig.algolia as unknown) as DocSearchPluginOptions
+  //     )
+  //   )
+  // }
 
   return plugins
 }

@@ -5,7 +5,8 @@
 
       <div class="nav-item navbar-links-wrapper" :style="linksWrapperStyle">
         <div>
-          <NavbarSearch />
+          <!-- TODO: change to customized search component -->
+          <!-- <NavbarSearch /> -->
         </div>
 
         <NavbarLinks />
