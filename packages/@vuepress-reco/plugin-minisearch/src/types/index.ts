@@ -3,4 +3,4 @@ export interface FileInfo {
   path: string;
 }
 
-export * from './section';
+export * from "./section";

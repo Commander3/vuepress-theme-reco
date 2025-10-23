@@ -1,7 +1,6 @@
 export interface Section {
-  id: string,
-  title: string,
-  titles: Array<string>,
-  text: string,
-  html: string
+  id: string;
+  title: string;
+  titles: Array<string>;
+  text: string;
 }

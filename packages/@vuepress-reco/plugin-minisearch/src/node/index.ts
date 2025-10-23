@@ -1,5 +1,5 @@
-import { minisearchPlugin } from './minisearchPlugin.js'
+import { minisearchPlugin } from "./minisearchPlugin.js";
 
-export * from './minisearchPlugin.js'
+export * from "./minisearchPlugin.js";
 
-export { minisearchPlugin }
+export { minisearchPlugin };

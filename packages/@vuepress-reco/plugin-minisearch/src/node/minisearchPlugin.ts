@@ -1,20 +1,20 @@
-import type { Plugin } from 'vuepress/core'
-import { Markdown } from '@vuepress/markdown'
-import { findFilesFromSeries } from './util.js'
+import type { Plugin } from "vuepress/core";
+import { Markdown } from "@vuepress/markdown";
+import { findFilesFromSeries } from "./util.js";
 let mdObject: Markdown | undefined = undefined;
-import { scanForBuild, saveJsonDocuments, saveIndexJson } from './load.js';
-import type { App } from 'vuepress/core'
+import { scanForBuild, saveIndexJson } from "./load.js";
+import type { App } from "vuepress/core";
 export const minisearchPlugin = (themeConfig: any): Plugin => ({
-  name: '@vuepress-reco/vuepress-plugin-minisearch',
+  name: "@vuepress-reco/vuepress-plugin-minisearch",
   extendsMarkdown: (md: Markdown) => {
     mdObject = md;
   },
   onPrepared: async (app: App) => {
-    if (typeof mdObject === 'undefined') {
+    if (typeof mdObject === "undefined") {
       return;
     }
     let series = themeConfig.series || {};
-    let fileArray: Array<{link: string, path: string}> = [];
+    let fileArray: Array<{ link: string; path: string }> = [];
     // 先拿一个key做实验
     if (series instanceof Object) {
       if (Object.hasOwn(series, "/docs/dev-guide/")) {
@@ -30,8 +30,7 @@ export const minisearchPlugin = (themeConfig: any): Plugin => ({
         findFilesFromSeries(toolsObj, fileArray);
       }
       await scanForBuild(fileArray, mdObject);
-      await saveJsonDocuments(app.dir.dest('assets/minisearch-documents.json'));
-      await saveIndexJson(app.dir.dest('assets/minisearch-index.json'));
+      await saveIndexJson(app.dir.dest("assets/minisearch-index.json"));
     }
   },
   onGenerated: async (app) => {
@@ -43,5 +42,5 @@ export const minisearchPlugin = (themeConfig: any): Plugin => ({
     //   }
     // })
     console.log(`[minisearchPlugin] onGenerated`);
-  }
-})
+  },
+});

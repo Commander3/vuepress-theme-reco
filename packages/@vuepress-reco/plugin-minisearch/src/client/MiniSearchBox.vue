@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import localSearchIndex from '@localSearchIndex'
 import {
   computedAsync,
   debouncedWatch,
@@ -30,7 +29,6 @@ import {
 } from 'vue'
 import { pathToFile } from '../../app/utils'
 import { escapeRegExp } from '../../shared'
-import { useData } from '../composables/data'
 import { LRUCache } from './lru'
 
 const emit = defineEmits<{
@@ -44,18 +42,9 @@ const resultsEl = shallowRef<HTMLElement>()
 
 const {search} = useSearch()
 
-
-interface Result {
-  title: string
-  titles: string[]
-  text?: string
-}
-
-const vitePressData = useData()
 const { activate } = useFocusTrap(el, {
   immediate: true,
 })
-const { localeIndex, theme } = vitePressData
 
 
 const filterText = ref('')
@@ -66,7 +55,7 @@ const showDetailedList = useLocalStorage(
 )
 const disableDetailedView = true;
 const buttonText = "Search"
-const results: Ref<(SearchResult & Result)[]> = shallowRef([])
+const results: Ref<SearchResult[]> = shallowRef([])
 
 const enableNoResults = ref(false)
 
