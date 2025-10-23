@@ -3,4 +3,5 @@ export interface Section {
   title: string,
   titles: Array<string>,
   text: string,
+  html: string
 }

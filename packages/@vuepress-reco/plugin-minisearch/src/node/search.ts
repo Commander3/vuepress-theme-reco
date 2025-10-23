@@ -7,13 +7,12 @@ class Searcher {
     fields: ['title', 'titles', 'text'],
     storeFields: ['title', 'titles'],
   });
-  private currentId = 0;
-  private fileHtmlContentMap = new Map<string, Map<string, string>>();
+  private num = 0;
 
-  addSection(filePath: string, section: Section, htmlContent: string) {
+  addSection(filePath: string, section: Section) {
+    this.num ++;
     if (!this.fileSectionMap.has(filePath)) {
       this.fileSectionMap.set(filePath, []);
-      this.fileHtmlContentMap.set(filePath, new Map<string, string>());
     }
     try{
       this.miniSearch.add(section);
@@ -21,27 +20,26 @@ class Searcher {
       console.error(`\n[addSection] error: ${error}, filePath: ${filePath}, section: ${JSON.stringify(section)}`);
     }
     this.fileSectionMap.get(filePath)!.push(section);
-    this.fileHtmlContentMap.get(filePath)!.set(section.id, htmlContent);
   }
   search(query: string) {
     return this.miniSearch.search(query);
   }
 
-  get nextId() {
-    return ++this.currentId;
-  }
-
-  getHtmlContent(filePath: string, id: string) {
-    if (this.fileHtmlContentMap.has(filePath)) {
-      return this.fileHtmlContentMap.get(filePath)!.get(id);
+  getJsonDocuments(): string {
+    let documents: Array<{id: string, html: string}> = Array(this.num);
+    let offset = 0;
+    for (const [_, sections] of this.fileSectionMap) {
+      for (const section of sections) {
+        documents[offset] = {id: section.id, html: section.html};
+        offset ++;
+      }
     }
-    return null;
+    return JSON.stringify(documents);
   }
 
-  getIndexJson() {
-    return this.miniSearch.toJSON();
+  getIndexJson(): string {
+    return JSON.stringify(this.miniSearch.toJSON());
   }
-  
 }
 
 export const searcher = new Searcher();

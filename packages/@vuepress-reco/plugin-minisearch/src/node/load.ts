@@ -66,8 +66,9 @@ async function indexFile(file: FileInfo, md: Markdown) {
       title: titles[titles.length - 1],
       titles: titles.slice(0, -1),
       text,
+      html: htmlContent,
     };
-    searcher.addSection(file.path, docSection, htmlContent);
+    searcher.addSection(file.path, docSection);
   }
 }
 
@@ -81,4 +82,15 @@ export async function scanForBuild(fileArray: Array<FileInfo>, md: Markdown) {
   });
   let endTime = Date.now();
   console.log(`✅ Indexing finished in ${endTime - startTime}ms`)
+}
+
+export async function saveJsonDocuments(documentsPath: string) {
+  let documentsJson = searcher.getJsonDocuments();
+  // If the file does not exist, create it
+  await fs.promises.writeFile(documentsPath, documentsJson, { mode: 0o644 });
+}
+
+export async function saveIndexJson(indexPath: string) {
+  let indexJson = searcher.getIndexJson();
+  await fs.promises.writeFile(indexPath, indexJson, { mode: 0o644 });
 }

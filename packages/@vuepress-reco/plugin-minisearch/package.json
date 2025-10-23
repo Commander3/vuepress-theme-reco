@@ -25,13 +25,17 @@
   },
   "dependencies": {
     "@vuepress/markdown": "2.0.0-rc.20",
+    "@vueuse/core": "^14.0.0",
+    "@vueuse/integrations": "^14.0.0",
     "mark.js": "^8.11.1",
     "minisearch": "^7.2.0",
     "p-map": "^7.0.3",
+    "pako": "^2.1.0",
     "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@types/debug": "^4.1.12"
+    "@types/debug": "^4.1.12",
+    "@types/pako": "^1.0.3"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.20"

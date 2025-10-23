@@ -1,17 +1,15 @@
 import type { Plugin } from 'vuepress/core'
-import { createMarkdown, Markdown } from '@vuepress/markdown'
-import MiniSearch from 'minisearch'
+import { Markdown } from '@vuepress/markdown'
 import { findFilesFromSeries } from './util.js'
 let mdObject: Markdown | undefined = undefined;
-import { scanForBuild } from './load.js';
-import { searcher } from './search.js';
+import { scanForBuild, saveJsonDocuments, saveIndexJson } from './load.js';
 import type { App } from 'vuepress/core'
 export const minisearchPlugin = (themeConfig: any): Plugin => ({
   name: '@vuepress-reco/vuepress-plugin-minisearch',
   extendsMarkdown: (md: Markdown) => {
     mdObject = md;
   },
-  onInitialized: async (app: App) => {
+  onPrepared: async (app: App) => {
     if (typeof mdObject === 'undefined') {
       return;
     }
@@ -31,10 +29,12 @@ export const minisearchPlugin = (themeConfig: any): Plugin => ({
         let toolsObj = series["/docs/tools/"];
         findFilesFromSeries(toolsObj, fileArray);
       }
+      await scanForBuild(fileArray, mdObject);
+      await saveJsonDocuments(app.dir.dest('assets/minisearch-documents.json'));
+      await saveIndexJson(app.dir.dest('assets/minisearch-index.json'));
     }
-    await scanForBuild(fileArray, mdObject);
   },
-  onGenerated: (app) => {
+  onGenerated: async (app) => {
     // const files = readdirSync(app.dir.dest('assets'))
     // let styleFileName = ''
     // files.forEach((file) => {
